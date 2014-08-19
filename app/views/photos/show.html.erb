@@ -5,10 +5,5 @@
   <%= @photo.caption %>
 </p>
 
-<p>
-  <strong>Project:</strong>
-  <%= @photo.project %>
-</p>
-
-<%= link_to 'Edit', edit_photo_path(@photo) %> |
-<%= link_to 'Back', photos_path %>
+<%= link_to 'Edit', edit_project_photo_path(@project, @photo) %> |
+<%= link_to 'Back', project_photos_path(@project) %>

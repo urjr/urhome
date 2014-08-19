@@ -27,10 +27,13 @@
 
 <p>
   <strong>Category:</strong>
-
   <%= @category.name %>
-  
 </p>
 
+<% @project.photos.each do |photo| %>
+  <p><%= photo.caption %> | <%= link_to 'Destroy', project_photo_path(@project, photo), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+<% end %>
+
 <%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<%= link_to 'Back', projects_path %> | 
+<%= link_to 'Add Photo', new_project_photo_path(@project) %>
