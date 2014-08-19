@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  location: MyString
+  year: 2014-08-18
+  client: MyString
+  client_url: MyString
+  category_id: 
+
+two:
+  name: MyString
+  location: MyString
+  year: 2014-08-18
+  client: MyString
+  client_url: MyString
+  category_id: 
