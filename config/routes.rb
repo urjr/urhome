@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :photos
-
-  resources :projects
+  resources :projects do
+    resources :photos
+  end
 
   resources :categories
 
