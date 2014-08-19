@@ -10,8 +10,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
-    @categories = Category.all
-    find_category
+    @category = Category.find(@project.category_id)
   end
 
   # GET /projects/new
@@ -67,14 +66,6 @@ class ProjectsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_project
       @project = Project.find(params[:id])
-    end
-
-    def find_category
-      @categories.each do |cat|
-        if cat.id == @project.category_id 
-          @category = cat
-        end
-      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

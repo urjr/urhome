@@ -33,7 +33,7 @@
   </div>
   <div class="field">
     <%= f.label :category_id %><br>
-    <%= f.select(:category_id, Category.all.collect {|c| [c.name,c.id] }, :prompt => "Choose One") -%>
+    <%= f.select(:category_id, Category.all.collect {|c| [c.name,c.id] }, :prompt => "Choose One") %>
   </div>
   <div class="actions">
     <%= f.submit %>
