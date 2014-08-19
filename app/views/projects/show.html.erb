@@ -37,6 +37,9 @@
 
 <% @project.photos.each do |photo| %>
   <p><%= photo.caption %> | <%= link_to 'Destroy', project_photo_path(@project, photo), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+  <div>
+    <%= image_tag photo.image.url(:square) %>
+  </div>
 <% end %>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
