@@ -7,6 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<%= link_to 'Home', root_path %>
+	<%= link_to 'All', categories_path %>
+	<% Category.order('id ASC').all.each do |category| %>
+		<%= link_to category.name, category_path(category) %>
+	<%end%>
 
 <%= yield %>
 
