@@ -1,19 +1,64 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Urhome</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-	<%= link_to 'Home', root_path %>
-	<%= link_to 'All', categories_path %>
-	<% Category.order('id ASC').all.each do |category| %>
-		<%= link_to category.name, category_path(category) %>
-	<%end%>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<%= yield %>
+    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
 
-</body>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <div class="row">
+      <div class="large-1 columns"></div>
+        <!-- Parent div of entire NAVBAR -->
+        <div class="large 10 columns">
+          <div class="large-12 columns title-bar"></div>
+          <div class="large-12 columns">
+            <nav class="top-bar" data-topbar>
+              <ul class="title-area">
+                <li class="name">
+                  <h1><%= link_to 'Ulises Reyes', categories_path %></h1>
+                </li>
+                 
+
+                <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+              </ul>
+
+              <section class="top-bar-section">
+                <!-- Right Nav Section -->
+                <ul class="right">
+                <li class="has-dropdown">
+                  <a href="#">Contact me</a>
+                  <ul class="dropdown">
+                    <li><a href="http://www.github.com/urjr"><i class="fi-social-github"></i> Github</a></li>
+                    <li><a href="http://twitter.com/ureys"><i class="fi-social-twitter"></i> Twitter</a></li>
+                    <li><a href="#"><i class="fi-social-linkedin"></i> LinkedIn</a></li>
+                    <li><a href="http://www.instagram.com/urjr"><i class="fi-social-instagram"></i> Instagram</a></li>
+                    <li><%= mail_to 'urjr8891@gmail.com', '<i class="fi-mail"></i> Email me!'.html_safe %></li>
+                  </ul>
+                </li>
+                </ul>
+
+                <!-- Left Nav Section -->
+                <ul class="left">
+                  <% Category.all.order('id ASC').each do |category| %>
+                    <li><%= link_to category.name, category_path(category) %></li>
+                  <% end %>
+                  <li><a href="#">CV</a></li>
+                  <li><a href="#">Blog</a></li>
+                </ul>
+              </section>
+            </nav>
+          </div>
+        </div>
+      <div class="large-1 columns"></div>
+    </div>
+
+    <%= yield %>
+    <%= javascript_include_tag "application" %>
+  </body>
 </html>
