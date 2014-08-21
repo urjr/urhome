@@ -1,6 +1,71 @@
-<h1>Listing categories</h1>
+<div class="row">
+  <div class="large-2 columns project-list-panel">
+    <ul>
+      <% @categories.each do |category| %>
+        <li><strong><%= category.name %></strong></li>
 
-<table>
+        <% category.projects.order('id asc').each do |project| %>
+          <li><%= link_to project.name, project_path(project) %></li>
+        <% end %>
+
+      <% end %>
+    </ul>
+  </div>
+
+
+  <div class="large-10 medium-12 columns project-display-panel">
+    <% @categories.each do |category| %>
+      <% category.projects.order('RANDOM()').each do |project| %>
+
+        <div id="<%= dom_id(project) %>" class="large-6 medium-6 columns">
+          <div class="project-wrapper">
+
+            <div class="project-title-bar category-<%= project.category_id %>">
+              <div class="row">
+                <div class="large-10 small-9 columns">
+                  <p><%= project.name %> (<%= @categories.find(project.category_id).name %>)</p>
+                </div>
+
+                <div class="large-2 small-3 columns">
+                  <a href="#"><i class="fi-minus"></i></a> <%= link_to '<i class="fi-plus"></i>'.html_safe, project_path(project)%> <a href="#"><i class="fi-x"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h1><%= project.name %></h1>
+            </div>
+
+            <div class="row">
+              <div class="project-text large-8 small-8 columns">
+                <p><%= project.description %></p>
+              </div>
+
+              <div class="project-meta large-4 small-4 columns">
+                <h2 class="meta-title">Metadata:</h2>
+                <h2>Location:</h2>
+                <p><%= project.location %></p>
+                <h2>Year:</h2>
+                <p><%= project.year.year %></p>
+                <h2>Client:</h2>
+                <p><%= link_to project.client, project.client_url %></p>
+                <h2>Category:</h2>
+                <p><%= @categories.find(project.category_id).name %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <% end %>
+    <% end %>
+  </div>
+
+</div>
+
+<%= link_to 'New Category', new_category_path %>
+<%= link_to 'New Project', new_project_path %>
+
+<!-- <table>
   <thead>
     <tr>
       <th>Name</th>
@@ -23,9 +88,4 @@
       </tr>
     <% end %>
   </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Category', new_category_path %>
-<%= link_to 'New Project', new_project_path %>
+</table> -->

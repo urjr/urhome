@@ -1,3 +1,159 @@
 // Place all the styles related to the projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$project-border-radius: .25em;
+$standard-transition: .25s;
+$project-border-style: 1px solid #bbb;
+
+
+.project-list-panel {
+	display: none;
+	text-align:left;
+	position: fixed;
+
+	ul{
+		list-style:none;
+
+		li{
+			font-size: .75em;
+			@include transition($standard-transition)
+
+		}
+	}
+}
+
+.project-list-panel ul li:hover a{
+	@include transform(scale(2,2));
+}
+
+.project-wrapper {
+	border: $project-border-style;
+	border-radius: $project-border-radius;
+	margin-bottom: 1.25em;
+	@include box-shadow(0 2px 6px 3px rgba(0,0,0,0.15));
+	background: linear-gradient(#fdfdfd,#f3f3f3);
+	@include transition($standard-transition);
+
+	h1{
+		font-size: 2em;
+		line-height: 0.75;
+		font-weight: bold;
+		position: absolute;
+		white-space: nowrap;
+		top: 1em;
+		left: 1em;
+	}
+
+	.project-meta{
+
+		h2{
+			font-size: 0.6em;
+			font-weight: bold;
+			margin:1.5em 0 0 0;
+		}
+
+		h2.meta-title{
+			margin-top: 5em;
+			margin-bottom: 1em;
+		}
+
+		p{
+			font-size: 0.6em;
+			margin: 0;
+		}	
+	}
+	
+	.project-text{
+		height:300px;
+		overflow-y: hidden;
+		margin: 3em 0 1.5em 0;	
+
+		p{
+			margin-left: 1.25em;
+			font-size: 0.75em;
+		}
+	}
+}
+
+
+
+
+
+.project-title-bar{
+	width: 100%;
+	height: 1.25em;
+	margin:0;
+	padding:0;
+	background: black;
+	border-radius: $project-border-radius $project-border-radius 0 0;
+	background: linear-gradient(#eee,#ccc);
+	border-bottom: $project-border-style;
+
+	p {
+		font-size: .5em;
+		position: relative;
+		top:.25em;
+		left: 1em;
+		margin-top: 0;
+		margin-left: 0;
+	}
+
+	i {
+		color: #333;
+		font-size: 0.75em;
+		position: relative;
+		top:-0.25em;
+		right: 0.25em;
+		display: none;
+	}
+
+	i:hover{
+		color: #888;
+	}
+}
+
+
+// min-width 641px (medium)
+@media only screen and (min-width: 40.063em) {
+	.project-title-bar i {
+		display: inline;
+		right: -1em;
+	}
+}
+
+
+// min-width 641px (large)
+@media only screen and (min-width: 64.063em) {
+	.project-list-panel {
+		display: block;
+	}
+
+	.project-wrapper {
+		h1 { 
+			position: relative;
+			top: 0.5em;
+			left: -9.9em;
+		}
+
+		.project-text{
+			margin: 2em 0 1.5em 0;	
+		}
+
+		.project-meta{
+			h2.meta-title {
+				margin-top: 3.5em;
+			}
+		}
+		
+	}
+
+	.project-wrapper:hover {
+		@include transform(scale(1.05,1.05));
+	}
+
+	.project-title-bar i {
+		right: 0.25em;
+	}
+
+}
