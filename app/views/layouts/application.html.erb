@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <title>urhome</title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -12,50 +12,64 @@
   </head>
 
   <body>
-    <div class="row">
-      <div class="large-1 columns"></div>
-        <!-- Parent div of entire NAVBAR -->
-        <div class="large 10 columns">
-          <div class="large-12 columns title-bar"></div>
-          <div class="large-12 columns">
-            <nav class="top-bar" data-topbar>
-              <ul class="title-area">
-                <li class="name">
-                  <h1><%= link_to 'Ulises Reyes', categories_path %></h1>
-                </li>
-                 
+    <div id="top-bar-wrapper">
+      <div class="row">
 
-                <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
-              </ul>
+        <div class="large-1 columns"></div>
+          
+          <div class="large 10 columns padding-off add-top-bar-shadow">
 
-              <section class="top-bar-section">
-                <!-- Right Nav Section -->
-                <ul class="right">
-                <li class="has-dropdown">
-                  <a href="#">Contact me</a>
-                  <ul class="dropdown">
-                    <li><a href="http://www.github.com/urjr"><i class="fi-social-github"></i> Github</a></li>
-                    <li><a href="http://twitter.com/ureys"><i class="fi-social-twitter"></i> Twitter</a></li>
-                    <li><a href="#"><i class="fi-social-linkedin"></i> LinkedIn</a></li>
-                    <li><a href="http://www.instagram.com/urjr"><i class="fi-social-instagram"></i> Instagram</a></li>
-                    <li><%= mail_to 'urjr8891@gmail.com', '<i class="fi-mail"></i> Email me!'.html_safe %></li>
+            <div class="title-bar top-edge" class="large-12 columns">
+              <div class="row">
+                <div class="large-11 small-11 column"><p>ulises_OS (v1.2.1)</p></div>
+                <div class="large-1 small-1 column"><i class="fi-minus"></i> <i class="fi-plus"></i> <i class="fi-x"></i></div>
+              </div>
+            </div>
+
+            <div id="top-bar-container" class="large-12 columns bottom-edge">
+
+              <nav class="top-bar rounded-top-bar" data-topbar>
+                <ul class="title-area">
+                  <li class="name">
+                    <h1><%= link_to 'Ulises Reyes', categories_path %></h1>
+                  </li>
+                   
+
+                  <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+                </ul>
+
+                <section class="top-bar-section">
+                  <!-- Right Nav Section -->
+                  <ul class="right">
+                  
                   </ul>
-                </li>
-                </ul>
 
-                <!-- Left Nav Section -->
-                <ul class="left">
-                  <% Category.all.order('id ASC').each do |category| %>
-                    <li><%= link_to category.name, category_path(category) %></li>
-                  <% end %>
-                  <li><a href="#">CV</a></li>
-                  <li><a href="#">Blog</a></li>
-                </ul>
-              </section>
-            </nav>
+                  <!-- Left Nav Section -->
+                  <ul class="left">
+                    <% Category.all.order('id ASC').each do |category| %>
+                      <li><%= link_to category.name, category_path(category) %></li>
+                    <% end %>
+                    <li><a href="#">CV</a></li>
+                    <li class="active"><a href="#">Blog</a></li>
+                    <li class="has-dropdown">
+                      <a href="#">Contact me</a>
+                      <ul class="dropdown add-dropdown-shadow">
+                        <li><a href="http://www.github.com/urjr"><i class="fi-social-github"></i>  Github</a></li>
+                        <li><a href="http://twitter.com/ureys"><i class="fi-social-twitter"></i>  Twitter</a></li>
+                        <li><a href="#"><i class="fi-social-linkedin"></i>  LinkedIn</a></li>
+                        <li><a href="http://www.instagram.com/urjr"><i class="fi-social-instagram"></i>  Instagram</a></li>
+                        <li><%= mail_to 'urjr8891@gmail.com', '<i class="fi-mail"></i>  Email'.html_safe %></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </section>
+              </nav>
+
+            </div>
           </div>
-        </div>
-      <div class="large-1 columns"></div>
+
+        <div class="large-1 columns"></div>
+      </div>
     </div>
 
     <%= yield %>

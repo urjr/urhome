@@ -1,0 +1,160 @@
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin box-shadow($shadow) {
+  -webkit-box-shadow: $shadow;
+     -moz-box-shadow: $shadow;
+      -ms-box-shadow: $shadow;
+          box-shadow: $shadow;
+}
+
+@mixin linear-gradient($gradient) {
+-webkit-linear-gradient: $gradient;
+   -moz-linear-gradient: $gradient;
+	-ms-linear-gradient: $gradient;
+	    linear-gradient: $gradient;
+}
+
+@mixin transition($gradient) {
+-webkit-transition: $gradient;
+   -moz-transition: $gradient;
+	-ms-transition: $gradient;
+	    transition: $gradient;
+}
+
+
+$edge-border: 1px solid #aaa;
+
+$inside-border: 1px solid #bbb;
+
+$emboss-effect: 0 1px 0 #dedede;
+
+$shadow-radius: .25em;
+
+#top-bar-container, .title-bar{
+	padding:0;
+}
+
+#top-bar-wrapper{
+	position: fixed;
+	width:100%;
+	top:0;
+}
+
+nav.top-bar ul li a{ text-shadow: $emboss-effect; }
+
+nav.top-bar ul.dropdown li a{ text-shadow:none;}
+
+.padding-off {
+	padding:0;
+}
+
+.add-top-bar-shadow {
+	@include box-shadow(0 2px 6px 3px rgba(0,0,0,0.15));
+	border-radius: $shadow-radius;
+}
+
+.add-dropdown-shadow {
+	@include box-shadow(0 0px 6px 2px rgba(0,0,0,0.15));
+	border-radius: $shadow-radius;
+}
+
+
+.bottom-edge{
+	@include border-radius(0 0 $shadow-radius $shadow-radius);
+	border-bottom: $edge-border;
+
+}
+
+ul.dropdown li {
+	border-left:1px solid #ccc;
+	border-bottom:1px solid #ccc;
+	border-right:1px solid #ccc;
+}
+
+
+
+.title-bar {
+	height: 1.25em;
+	background: linear-gradient(#eee,#ccc);
+	display: none;
+	margin:0;
+	
+	div{
+		height: 100%;
+		
+		div{
+			height:100%;
+
+			p {
+				font-size: .5em;
+				position:relative;
+				top:.35em;
+				left: 1em;
+				margin:0;
+			}
+
+			i {
+				height: 0;
+				font-size: .75em;
+				position:relative;
+				top:-0.3em;
+				right: 0;
+				text-align:right;
+				text-shadow: $emboss-effect;;
+			}
+
+			p,i{
+				color: #333;
+			}
+		}
+	}
+}
+
+// min-width 641px (medium)
+@media only screen and (min-width: 40.063em) { 
+	.title-bar{
+		display: block;
+	}
+
+	.rounded-top-bar{
+		border-radius: 0 0 $shadow-radius $shadow-radius;
+	}
+
+	nav.top-bar{
+		ul{
+			li{ border-right:$inside-border };
+		}
+	}
+} 
+
+
+// min-width 1025 (large)
+@media only screen and (min-width: 64.063em) { 
+	#top-bar-wrapper {
+		top:1em;
+	}
+	.title-bar{
+		@include border-radius($shadow-radius $shadow-radius 0 0);
+	}
+
+	.title-bar div div i { 
+		right:-1em;
+	}
+
+	.bottom-edge{
+		border-left: $edge-border;
+		border-right: $edge-border;
+	}
+
+	.top-edge {
+		border-top: $edge-border; 
+		border-right: $edge-border;
+		border-bottom: $inside-border;
+		border-left: $edge-border;
+	}
+}
