@@ -1239,9 +1239,9 @@ $topbar-link-weight: bold;
 // $topbar-link-hover-lightness: -10%; // Darken by 10%
 $topbar-link-bg: $topbar-bg;
 // $topbar-link-bg-color-hover: #555555;
-$topbar-link-bg-hover: linear-gradient(#fff,#eee);
-$topbar-link-bg-active: linear-gradient(#ccc,#aaa);
-$topbar-link-bg-active-hover: $topbar-link-bg-hover;
+$topbar-link-bg-hover: linear-gradient(#fff,#aaa);
+$topbar-link-bg-active: $topbar-link-bg-hover;
+$topbar-link-bg-active-hover: $topbar-link-bg-active;
 // $topbar-link-font-family: $body-font-family;
 // $topbar-link-text-transform: none;
 // $topbar-link-padding: $topbar-height / 3;

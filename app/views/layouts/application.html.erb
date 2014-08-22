@@ -13,11 +13,11 @@
 
   <body>
     <div id="top-bar-wrapper">
+    
       <div class="row">
 
-        <div class="large-2 columns"><p class="prevent-column-collapse"></p></div>
           
-          <div class="large-8 columns padding-off add-top-bar-shadow">
+          <div class="large-8 large-offset-2 columns padding-off add-top-bar-shadow">
 
             <div class="title-bar">
               <div class="row">
@@ -39,18 +39,23 @@
                 </ul>
 
                 <section class="top-bar-section">
-                  <!-- Right Nav Section -->
-                  <ul class="right">
-                  
-                  </ul>
 
                   <!-- Left Nav Section -->
                   <ul class="left">
-                    <% Category.all.order('id ASC').each do |category| %>
-                      <li><%= link_to category.name, category_path(category) %></li>
-                    <% end %>
+
+                    <li class="has-dropdown">
+                      <a href="#">Work</a>
+                      <ul class="dropdown add-dropdown-shadow">  
+                        <li><%= link_to 'All', categories_path %></li>                
+                        <% Category.all.order('id ASC').each do |category| %>
+                          <li><%= link_to category.name, category_path(category) %></li>
+                        <% end %>
+                      </ul>
+                    </li>
+
+                    <li><a href="#">Blog</a></li>
+                    <li ><a href="#">About</a></li>
                     <li><a href="#">CV</a></li>
-                    <li class="active"><a href="#">Blog</a></li>
                     <li class="has-dropdown">
                       <a href="#">Contact me</a>
                       <ul class="dropdown add-dropdown-shadow">
@@ -63,12 +68,16 @@
                     </li>
                   </ul>
                 </section>
+
               </nav>
 
             </div>
           </div>
 
-        <div class="large-2 columns"><p class="prevent-column-collapse"></p></div>
+          <div class="logo-holder large-2 columns">
+            <%= link_to image_tag("logo.png"), root_path, :class => "logo" %>
+          </div>
+          
       </div>
     </div>
 

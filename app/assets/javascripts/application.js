@@ -16,4 +16,18 @@
 //= require turbolinks
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
+function loadAll(){
+	// all init() functions go here.
+	mainMenu.init();
+	projects.init();
+};
+
+$(function(){ 
+	$(document).foundation();
+
+	loadAll();
+	
+	$(document).on('page:load', function(){
+		loadAll();
+	});
+});

@@ -25,6 +25,25 @@ $shadow-radius: .25em;
 	display:none;
 }
 
+.logo-holder {
+	position:relative;
+}
+
+.logo {
+	position: absolute;
+	display: none;
+	opacity: 0.60;
+	top: -15px;
+	transition:.25s;
+	z-index:0;
+}
+
+.logo:hover {
+	opacity: 1;
+}
+
+
+
 //  Emboss effects on Title bars and dropdown links
 nav.top-bar ul li a{ text-shadow: $emboss-effect; }
 
@@ -33,10 +52,6 @@ nav.top-bar ul.dropdown li a{ text-shadow:none;}
 .add-top-bar-shadow {
 	@include box-shadow(0 2px 6px 3px rgba(0,0,0,0.15));
 	border-radius: $shadow-radius;
-}
-
-.add-dropdown-shadow {
-	
 }
 
 
@@ -65,6 +80,7 @@ ul.dropdown {
 	display: none;
 	margin:0;
 	border-bottom: $inside-border;
+	position:relative;
 	
 	div{
 		height: 100%;
@@ -161,4 +177,6 @@ ul.dropdown {
 	.container{
 		margin-top: 120px;
 	}
+
+	.logo {display:block;}
 }

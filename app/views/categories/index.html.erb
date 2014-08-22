@@ -1,11 +1,13 @@
+<span class="page-name" style="display:none;">Work</span>
+
 <div class="row">
   <div class="large-2 columns project-list-panel">
     <ul>
-      <% @categories.each do |category| %>
-        <li><strong><%= category.name %></strong></li>
+      <% @categories.order('id asc').each do |category| %>
+        <li><strong><%= category.name %>:</strong></li>
 
         <% category.projects.order('id asc').each do |project| %>
-          <li><%= link_to project.name, project_path(project) %></li>
+          <li class=" project-link link-<%= @categories.find(project.category_id).name %>"><%= link_to project.name, project_path(project) %></li>
         <% end %>
 
       <% end %>
@@ -14,44 +16,48 @@
 
 
   <div class="large-10 medium-12 columns project-display-panel">
-    <% @categories.each do |category| %>
+    <% @categories.order('RANDOM()').each do |category| %>
       <% category.projects.order('RANDOM()').each do |project| %>
 
         <div id="<%= dom_id(project) %>" class="large-6 medium-6 columns">
           <div class="project-wrapper">
 
-            <div class="project-title-bar category-<%= project.category_id %>">
+            <div class="project-title-bar cat-<%= @categories.find(project.category_id).name %>">
               <div class="row">
                 <div class="large-10 small-9 columns">
                   <p><%= project.name %> (<%= @categories.find(project.category_id).name %>)</p>
                 </div>
 
                 <div class="large-2 small-3 columns">
-                  <a href="#"><i class="fi-minus"></i></a> <%= link_to '<i class="fi-plus"></i>'.html_safe, project_path(project)%> <a href="#"><i class="fi-x"></i></a>
+                  <a href="#" class="minimize"><i class="fi-minus"></i></a> <%= link_to '<i class="fi-plus"></i>'.html_safe, project_path(project)%> <a href="#" class="close"><i class="fi-x"></i></a>
                 </div>
               </div>
             </div>
 
-            <div>
-              <h1><%= project.name %></h1>
-            </div>
+            <div class="project-content-wrapper">
 
-            <div class="row">
-              <div class="project-text large-8 small-8 columns">
-                <p><%= project.description %></p>
+              <div>
+                <h1><%= project.name %></h1>
               </div>
 
-              <div class="project-meta large-4 small-4 columns">
-                <h2 class="meta-title">Metadata:</h2>
-                <h2>Location:</h2>
-                <p><%= project.location %></p>
-                <h2>Year:</h2>
-                <p><%= project.year.year %></p>
-                <h2>Client:</h2>
-                <p><%= link_to project.client, project.client_url %></p>
-                <h2>Category:</h2>
-                <p><%= @categories.find(project.category_id).name %></p>
+              <div class="row">
+                <div class="project-text large-8 small-8 columns">
+                  <p><%= project.description %></p>
+                </div>
+
+                <div class="project-meta large-4 small-4 columns">
+                  <h2 class="meta-title">Metadata:</h2>
+                  <h2>Location:</h2>
+                  <p><%= project.location %></p>
+                  <h2>Year:</h2>
+                  <p><%= project.year.year %></p>
+                  <h2>Client:</h2>
+                  <p><%= link_to project.client, project.client_url %></p>
+                  <h2>Category:</h2>
+                  <p><%= @categories.find(project.category_id).name %></p>
+                </div>
               </div>
+
             </div>
           </div>
         </div>

@@ -11,6 +11,7 @@ $project-border-style: 1px solid #bbb;
 	display: none;
 	text-align:left;
 	position: fixed;
+	z-index:99;
 
 	ul{
 		list-style:none;
@@ -23,8 +24,8 @@ $project-border-style: 1px solid #bbb;
 	}
 }
 
-.project-list-panel ul li:hover a{
-	@include transform(scale(2,2));
+.project-list-panel ul li.project-link:hover{
+	@include transform(scale(1.25,1.25));
 }
 
 .project-wrapper {
@@ -41,6 +42,7 @@ $project-border-style: 1px solid #bbb;
 		font-weight: bold;
 		position: absolute;
 		white-space: nowrap;
+		display: inline;
 		top: 1em;
 		left: 1em;
 	}
@@ -109,16 +111,32 @@ $project-border-style: 1px solid #bbb;
 	}
 
 	i:hover{
-		color: #888;
+		color: #fff;
 	}
 }
+
+//category specific title-bar colors
+
+// .cat-Graphic{background: linear-gradient(#F04848,#930c0c);}
+// .cat-Web{background: linear-gradient(#F09018,#b0670b);}
+// .cat-UX{background: linear-gradient(#95DE3E,#6eb11e);}
+// .cat-Arch {background: linear-gradient(#18A8F0,#0b79b0);}
+
+//category specific link colors
+
+.link-Graphic a{ color:red}
+.link-Web a{ color:orange}
+.link-UX a{ color:green}
+.link-Arch a{color:blue}
+
+
 
 
 // min-width 641px (medium)
 @media only screen and (min-width: 40.063em) {
 	.project-title-bar i {
 		display: inline;
-		right: -1em;
+		right: -30%;
 	}
 }
 
@@ -132,8 +150,8 @@ $project-border-style: 1px solid #bbb;
 	.project-wrapper {
 		h1 { 
 			position: relative;
-			top: 0.5em;
-			left: -9.9em;
+			top: 0.2em;
+			left: 0.5em;;
 		}
 
 		.project-text{
