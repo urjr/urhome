@@ -13,6 +13,7 @@ var projects = {
 
 	windowMinimize: function(){
 
+		$('.minimize').removeClass('hidden');
 		$('.minimize').click(function(e){
 			e.preventDefault();
 			if ($(this).hasClass('hidden')){
